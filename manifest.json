@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Visionary Image Downloader",
+  "version": "1.0",
+  "description": "Scrape, filter, and download images with ease in a premium ZIP package.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background/service_worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/scraper.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/vendor/jszip.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
